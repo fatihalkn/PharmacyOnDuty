@@ -25,12 +25,22 @@ class NetworkHelper {
     
     let baseUrl = "https://www.nosyapi.com/apiv2/service/"
     let apıKey = "?apiKey=Ee6hcWuTWw50PZ1hLF79bVTBLijO3W9NWGQARML5GvsmNa0VNruBRmMr4wYO"
+    let disctApıkey = "apiKey=Ee6hcWuTWw50PZ1hLF79bVTBLijO3W9NWGQARML5GvsmNa0VNruBRmMr4wYO"
     
     func requestUrl(url: String) -> String {
         baseUrl + url + apıKey
     }
     
+    func requestDistcUrl(city: String) -> String {
+        return baseUrl + CitiesEndPoint.district.rawValue + city + "&" + disctApıkey
+    }
+    
     func requestPharmacy(url: String, cities: String, district: String) -> String {
         baseUrl + url + apıKey + "&city=\(cities)" + "&city=\(cities)&district=\(district)"
+    }
+    
+    func requestDistrict(url: String, cities: String, slugCity: String) -> String {
+        baseUrl + url + apıKey + "&city=\(cities)" + "&city=\(slugCity)"
+        
     }
 }

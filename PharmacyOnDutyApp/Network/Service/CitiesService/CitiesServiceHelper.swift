@@ -9,13 +9,8 @@ import Foundation
 
 enum CitiesEndPoint: String {
     case cities = "pharmacies-on-duty/cities"
-    
-    var path: String {
-        switch self {
-        case .cities:
-            return NetworkHelper.shared.requestUrl(url: CitiesEndPoint.cities.rawValue)
-        }
-    }
+    case district = "pharmacies-on-duty/cities?city="
+
 }
 
 

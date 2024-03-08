@@ -55,7 +55,8 @@ class HomeController : UIViewController {
         
     }()
     
-    let viewModel = HomeViewModel()
+    let homeViewModel = HomeViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +66,7 @@ class HomeController : UIViewController {
         setupCons()
         getData()
         isSucceed()
-        let appearanca = UINavigationBarAppearance()
-        appearanca.configureWithOpaqueBackground()
-        navigationItem.standardAppearance = appearanca
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,6 +85,8 @@ class HomeController : UIViewController {
         
     }
     
+   
+    
     func setupRadius() {
         searchTextField.layer.cornerRadius = searchTextField.frame.height / 2
         searchTextField.layer.masksToBounds = true
@@ -94,7 +95,6 @@ class HomeController : UIViewController {
     func setupDelegate() {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
-        
     }
     
     func setupRegister() {
@@ -103,11 +103,11 @@ class HomeController : UIViewController {
     }
     
     func getData() {
-        viewModel.getAllCity()
+        homeViewModel.getAllCity()
     }
     
     func isSucceed() {
-        viewModel.successCallback = { [weak self] in
+        homeViewModel.successCallback = { [weak self] in
             DispatchQueue.main.async {
                 self?.homeCollectionView.reloadData()
             }
@@ -118,12 +118,12 @@ class HomeController : UIViewController {
 //MARK: - Configure CollectionView
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.cities.count
+        return homeViewModel.cities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: HomeControllerCell.identifier, for: indexPath) as! HomeControllerCell
-        let data = viewModel.cities[indexPath.item]
+        let data = homeViewModel.cities[indexPath.item]
         cell.configure(data: data)
         return cell
     }
@@ -132,6 +132,23 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cellWidth: CGFloat = collectionView.frame.width - 40
         let cellHeight: CGFloat = 40
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCity = homeViewModel.cities[indexPath.item].slug
+        let vc = PickerViewController()
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        vc.city = selectedCity
+        present(vc, animated: true)
+    }
+}
+
+//MARK: - Custom ModalPresention
+extension HomeController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        let vc = PickerViewController()
+        return HalfSizePresentConroller(presentedViewController: presented, presenting: vc)
     }
 }
 

@@ -8,15 +8,16 @@
 import Foundation
 
 class HomeViewModel {
-    var errorCallback: ((String)->())?
     var successCallback: (()->())?
-        
-    let manager = CitiesService.shared
     
+    let allCityManager = CitiesService.shared
+    
+
     var cities: [Datum] = []
     
+    
     func getAllCity() {
-        manager.getCities { city, error in
+        allCityManager.getCities { city, error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
@@ -26,8 +27,8 @@ class HomeViewModel {
                 }
             }
         }
-        
     }
+    
+   
 }
-
 

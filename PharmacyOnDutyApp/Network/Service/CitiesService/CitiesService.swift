@@ -9,6 +9,7 @@ import Foundation
 
 protocol CitiesServiceProtocol {
     func getCities(completion: @escaping((CitiesModel?,Error?) ->() ))
+    func getDistrict(city:String ,completion: @escaping ((CitiesModel?, Error?) -> ()))
 }
 
 class CitiesService {
@@ -16,8 +17,20 @@ class CitiesService {
 }
 
 extension CitiesService: CitiesServiceProtocol {
+    
+    func getDistrict(city:String ,completion: @escaping ((CitiesModel?, Error?) -> ())) {
+        NetworkManager.shared.request(type: CitiesModel.self, url:  NetworkHelper.shared.requestDistcUrl(city: city)  , method: .get) { response in
+            switch response {
+            case .success(let data):
+                completion(data,nil)
+            case .failure(let error):
+                completion(nil,error)
+            }
+        }
+    }
+    
     func getCities(completion: @escaping ((CitiesModel?, Error?) -> ())) {
-        NetworkManager.shared.request(type: CitiesModel.self, url: CitiesEndPoint.cities.path, method: .get) { response in
+        NetworkManager.shared.request(type: CitiesModel.self, url: NetworkHelper.shared.requestUrl(url: CitiesEndPoint.cities.rawValue), method: .get) { response in
             switch response {
             case .success(let data):
                 completion(data,nil)

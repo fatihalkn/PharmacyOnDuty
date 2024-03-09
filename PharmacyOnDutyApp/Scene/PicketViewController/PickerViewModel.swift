@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class PickerViewModel
-{
+final class PickerViewModel {
+
     var successCallback: (()->())?
     
     var disctricts: [Datum] = []

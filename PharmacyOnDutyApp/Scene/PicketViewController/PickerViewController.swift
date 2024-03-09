@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+protocol PickerViewButtonDelegate {
+    func clickedOkButton(city: String, district: String)
+}
+
 class PickerViewController: UIViewController {
+    
+    var pickerViewDelegate: PickerViewButtonDelegate?
     
     let pickerViewModel = PickerViewModel()
     
@@ -65,9 +71,14 @@ class PickerViewController: UIViewController {
     }
     
     @objc func clickedOkButton() {
-        
-        
+        let selectedRow = districtPickerView.selectedRow(inComponent: 0)
+        let selectedDisctrict = pickerViewModel.disctricts[selectedRow].slug
+        let selectedCity = city ?? ""
+        dismiss(animated: true) {
+            self.pickerViewDelegate?.clickedOkButton(city: selectedCity, district: selectedDisctrict)
+        }
     }
+
     
     @objc func clickedCancelButton() {
         print("İPTAL BUTONUNA BASTIN")

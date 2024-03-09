@@ -52,5 +52,116 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7FA46333-C0EC-4BD0-BF8F-87B86FAB1FEB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PharmacyOnDutyApp/Network/Service/PharmacyModelService/PharmacyService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "getPharmacy(city:disctrict:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7FA46333-C0EC-4BD0-BF8F-87B86FAB1FEB - 7dc2e68aeb5e020d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;PharmacyOnDutyApp.PharmacyModel, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; () in PharmacyOnDutyApp.PharmacyService.getPharmacy(city: Swift.String, disctrict: Swift.String, completion: (Swift.Optional&lt;PharmacyOnDutyApp.PharmacyModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Service/PharmacyModelService/PharmacyService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "428">
+               </Location>
+               <Location
+                  uuid = "7FA46333-C0EC-4BD0-BF8F-87B86FAB1FEB - 7dc2e68aeb5e020d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;PharmacyOnDutyApp.PharmacyModel, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; () in PharmacyOnDutyApp.PharmacyService.getPharmacy(city: Swift.String, disctrict: Swift.String, completion: (Swift.Optional&lt;PharmacyOnDutyApp.PharmacyModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Service/PharmacyModelService/PharmacyService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "7FA46333-C0EC-4BD0-BF8F-87B86FAB1FEB - d2282c380f108245"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PharmacyOnDutyApp.PharmacyService.getPharmacy(city: Swift.String, disctrict: Swift.String, completion: (Swift.Optional&lt;PharmacyOnDutyApp.PharmacyModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Service/PharmacyModelService/PharmacyService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A604CDE-CD9D-4314-A7EF-894AEE2648DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PharmacyOnDutyApp/Scene/PicketViewController/PickerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "getData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5A604CDE-CD9D-4314-A7EF-894AEE2648DA - ecc199245c37d9c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PharmacyOnDutyApp.PickerViewController.isSucceed() -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Scene/PicketViewController/PickerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "5A604CDE-CD9D-4314-A7EF-894AEE2648DA - 995789cb937e6186"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PharmacyOnDutyApp.PickerViewController.getData() -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Scene/PicketViewController/PickerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

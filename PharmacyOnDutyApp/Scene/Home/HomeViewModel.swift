@@ -12,7 +12,8 @@ class HomeViewModel {
     
     let allCityManager = CitiesService.shared
     
-
+    
+    var filterCities: [Datum] = []
     var cities: [Datum] = []
     
     
@@ -23,6 +24,7 @@ class HomeViewModel {
             } else {
                 if let cities = city?.data {
                     self.cities = cities
+                    self.filterCities = cities
                     self.successCallback?()
                 }
             }

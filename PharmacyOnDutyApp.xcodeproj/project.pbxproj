@@ -29,6 +29,9 @@
 		3D1C30B92B9B1A7D00BBD724 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30B82B9B1A7D00BBD724 /* PickerViewController.swift */; };
 		3D1C30BB2B9B344600BBD724 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30BA2B9B344600BBD724 /* PickerViewModel.swift */; };
 		3D1C30BE2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30BD2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift */; };
+		3D1C30C12B9C76DB00BBD724 /* PharmaciesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C02B9C76DB00BBD724 /* PharmaciesListController.swift */; };
+		3D1C30C32B9C771500BBD724 /* PharmaciesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C22B9C771500BBD724 /* PharmaciesListModel.swift */; };
+		3D1C30C52B9C8FAC00BBD724 /* PharmaciesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C42B9C8FAC00BBD724 /* PharmaciesListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		3D1C30B82B9B1A7D00BBD724 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		3D1C30BA2B9B344600BBD724 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
 		3D1C30BD2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSizePresentConroller.swift; sourceTree = "<group>"; };
+		3D1C30C02B9C76DB00BBD724 /* PharmaciesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesListController.swift; sourceTree = "<group>"; };
+		3D1C30C22B9C771500BBD724 /* PharmaciesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesListModel.swift; sourceTree = "<group>"; };
+		3D1C30C42B9C8FAC00BBD724 /* PharmaciesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,7 @@
 		3D1C30AE2B99E83E00BBD724 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3D1C30BF2B9C76AF00BBD724 /* PharmaciesList */,
 				3D1C30B72B9B1A6800BBD724 /* PicketViewController */,
 				3D1C30AF2B99E84400BBD724 /* Home */,
 			);
@@ -198,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				3D1C30B52B99F5CB00BBD724 /* HomeControllerCell.swift */,
+				3D1C30C42B9C8FAC00BBD724 /* PharmaciesListCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -217,6 +225,15 @@
 				3D1C30BD2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		3D1C30BF2B9C76AF00BBD724 /* PharmaciesList */ = {
+			isa = PBXGroup;
+			children = (
+				3D1C30C02B9C76DB00BBD724 /* PharmaciesListController.swift */,
+				3D1C30C22B9C771500BBD724 /* PharmaciesListModel.swift */,
+			);
+			path = PharmaciesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +312,9 @@
 				3D1C30BB2B9B344600BBD724 /* PickerViewModel.swift in Sources */,
 				3D1C30B32B99E85A00BBD724 /* HomeViewModel.swift in Sources */,
 				3D1C30A42B99D98600BBD724 /* PharmacyHelper.swift in Sources */,
+				3D1C30C12B9C76DB00BBD724 /* PharmaciesListController.swift in Sources */,
 				3D1C308B2B98C9D500BBD724 /* NetworkHelper.swift in Sources */,
+				3D1C30C32B9C771500BBD724 /* PharmaciesListModel.swift in Sources */,
 				3D1C30A02B99D70B00BBD724 /* AllPharmacyHelper.swift in Sources */,
 				3D1C30BE2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift in Sources */,
 				3D1C30772B98C8BD00BBD724 /* SceneDelegate.swift in Sources */,
@@ -308,6 +327,7 @@
 				3D1C30A82B99E14800BBD724 /* DistrictModel.swift in Sources */,
 				3D1C30912B98E21300BBD724 /* CitiesModel.swift in Sources */,
 				3D1C30932B98E38C00BBD724 /* PharmacyModel.swift in Sources */,
+				3D1C30C52B9C8FAC00BBD724 /* PharmaciesListCell.swift in Sources */,
 				3D1C30B12B99E85000BBD724 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

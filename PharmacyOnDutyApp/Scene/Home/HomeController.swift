@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class HomeController : UIViewController {
-
-    var cities: [Cites] = []
+    
+    let homeViewModel = HomeViewModel()
     
     private let homeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,7 +31,7 @@ class HomeController : UIViewController {
         imageIcon.tintColor = .black
         let contentView = UIView()
         contentView.addSubview(imageIcon)
-        contentView.frame = CGRect(x: 5, y: 0, width: (UIImage(named: "search")?.size.width)!, height: (UIImage(named: "search")?.size.height)!)
+        contentView.frame = CGRect(x: 5, y: 0, width: (UIImage(named: "search")?.size.width ?? 20) + 10, height: (UIImage(named: "search")?.size.height ?? 20)!)
         imageIcon.frame = CGRect(x: 5, y: 0, width: (UIImage(named: "search")?.size.width)!, height: (UIImage(named: "search")?.size.height)!)
         textField.leftView = contentView
         textField.leftViewMode = .always
@@ -55,7 +55,7 @@ class HomeController : UIViewController {
         
     }()
     
-    let homeViewModel = HomeViewModel()
+    
     
     
     override func viewDidLoad() {
@@ -95,6 +95,8 @@ class HomeController : UIViewController {
     func setupDelegate() {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
+        
+        searchTextField.delegate = self
     }
     
     func setupRegister() {
@@ -118,12 +120,12 @@ class HomeController : UIViewController {
 //MARK: - Configure CollectionView
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeViewModel.cities.count
+        return homeViewModel.filterCities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: HomeControllerCell.identifier, for: indexPath) as! HomeControllerCell
-        let data = homeViewModel.cities[indexPath.item]
+        let data = homeViewModel.filterCities[indexPath.item]
         cell.configure(data: data)
         return cell
     }
@@ -138,6 +140,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let selectedCity = homeViewModel.cities[indexPath.item].slug
         let vc = PickerViewController()
         vc.transitioningDelegate = self
+        vc.pickerViewDelegate = self
         vc.modalPresentationStyle = .custom
         vc.city = selectedCity
         present(vc, animated: true)
@@ -150,6 +153,44 @@ extension HomeController: UIViewControllerTransitioningDelegate {
         let vc = PickerViewController()
         return HalfSizePresentConroller(presentedViewController: presented, presenting: vc)
     }
+}
+
+//MARK: - PickerViewButtonDelegate
+
+extension HomeController: PickerViewButtonDelegate {
+    func clickedOkButton(city: String, district: String) {
+        let vc = PharmaciesListController()
+        vc.city = city
+        vc.district = district
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: - SearcTextField Filter
+extension HomeController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text,
+              let range = Range(range, in: currentText) else {
+            return true
+        }
+        
+        let searchText = currentText.replacingCharacters(in: range, with: string)
+        filterCities(with: searchText.lowercased())
+        return true
+    }
+    
+    func filterCities(with searcText: String) {
+        if searcText.isEmpty {
+            homeViewModel.filterCities = homeViewModel.cities
+        } else {
+            homeViewModel.filterCities = homeViewModel.cities.filter {
+                $0.cities.lowercased().contains(searcText)
+            }
+        }
+        
+        homeCollectionView.reloadData()
+    }
+    
 }
 
 //MARK: - Configure UI Constrains

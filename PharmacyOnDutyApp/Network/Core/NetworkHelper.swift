@@ -36,7 +36,7 @@ class NetworkHelper {
     }
     
     func requestPharmacy(url: String, cities: String, district: String) -> String {
-        baseUrl + url + apıKey + "&city=\(cities)" + "&city=\(cities)&district=\(district)"
+        baseUrl + url + apıKey  + "&city=\(cities)&district=\(district)"
     }
     
     func requestDistrict(url: String, cities: String, slugCity: String) -> String {

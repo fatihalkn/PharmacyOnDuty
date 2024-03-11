@@ -17,9 +17,7 @@ class PharmacyService {
 
 extension PharmacyService: PharmacyModelServiceProtocol {
     func getPharmacy(city: String, disctrict: String, completion: @escaping ((PharmacyModel?, Error?) -> ())) {
-        
         let pharmacyRequestUrl = NetworkHelper.shared.requestPharmacy(url: PharmacyModelEndPoint.latitudeAndLongitude.rawValue, cities: city, district: disctrict)
-        print(pharmacyRequestUrl)
         NetworkManager.shared.request(type: PharmacyModel.self, url: pharmacyRequestUrl, method: .get) { result in
             switch result {
             case .success(let data):

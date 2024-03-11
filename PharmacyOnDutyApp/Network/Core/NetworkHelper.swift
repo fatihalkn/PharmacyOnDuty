@@ -43,4 +43,9 @@ class NetworkHelper {
         baseUrl + url + apıKey + "&city=\(cities)" + "&city=\(slugCity)"
         
     }
+    
+    func requestLatitudeAndLongitude(url: String,latitude: Double,longitude: Double) -> String {
+        baseUrl + url +  "latitude=\(latitude)" + "&longitude=\(longitude)" + "&" + disctApıkey
+        
+    }
 }

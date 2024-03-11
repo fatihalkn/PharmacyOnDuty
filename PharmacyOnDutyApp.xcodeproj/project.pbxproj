@@ -32,6 +32,11 @@
 		3D1C30C12B9C76DB00BBD724 /* PharmaciesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C02B9C76DB00BBD724 /* PharmaciesListController.swift */; };
 		3D1C30C32B9C771500BBD724 /* PharmaciesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C22B9C771500BBD724 /* PharmaciesListModel.swift */; };
 		3D1C30C52B9C8FAC00BBD724 /* PharmaciesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C42B9C8FAC00BBD724 /* PharmaciesListCell.swift */; };
+		3D1C30C82B9DEAAD00BBD724 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C30C72B9DEAAD00BBD724 /* MapController.swift */; };
+		3D1C30CB2B9E13B400BBD724 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1C30CA2B9E13B400BBD724 /* CoreLocation.framework */; };
+		3DE7A2FB2B9EF76B0021E4E7 /* MapControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A2FA2B9EF76B0021E4E7 /* MapControllerViewModel.swift */; };
+		3DE7A3002B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A2FF2B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift */; };
+		3DE7A3022B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A3012B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,11 @@
 		3D1C30C02B9C76DB00BBD724 /* PharmaciesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesListController.swift; sourceTree = "<group>"; };
 		3D1C30C22B9C771500BBD724 /* PharmaciesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesListModel.swift; sourceTree = "<group>"; };
 		3D1C30C42B9C8FAC00BBD724 /* PharmaciesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesListCell.swift; sourceTree = "<group>"; };
+		3D1C30C72B9DEAAD00BBD724 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		3D1C30CA2B9E13B400BBD724 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3DE7A2FA2B9EF76B0021E4E7 /* MapControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControllerViewModel.swift; sourceTree = "<group>"; };
+		3DE7A2FF2B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeAndLongitudeHelper.swift; sourceTree = "<group>"; };
+		3DE7A3012B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeAndLongitudeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D1C30CB2B9E13B400BBD724 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +91,7 @@
 			children = (
 				3D1C30732B98C8BD00BBD724 /* PharmacyOnDutyApp */,
 				3D1C30722B98C8BD00BBD724 /* Products */,
+				3D1C30C92B9E13B400BBD724 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +160,7 @@
 		3D1C30962B98E78E00BBD724 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3DE7A2FC2B9EF8540021E4E7 /* LatitudeAndLongitudeService */,
 				3D1C30992B98E82100BBD724 /* PharmacyModelService */,
 				3D1C30982B98E81400BBD724 /* AllpharmacyService */,
 				3D1C30972B98E80900BBD724 /* CitiesService */,
@@ -185,6 +198,7 @@
 		3D1C30AE2B99E83E00BBD724 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3D1C30C62B9DEA9A00BBD724 /* Map */,
 				3D1C30BF2B9C76AF00BBD724 /* PharmaciesList */,
 				3D1C30B72B9B1A6800BBD724 /* PicketViewController */,
 				3D1C30AF2B99E84400BBD724 /* Home */,
@@ -236,6 +250,32 @@
 			path = PharmaciesList;
 			sourceTree = "<group>";
 		};
+		3D1C30C62B9DEA9A00BBD724 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3D1C30C72B9DEAAD00BBD724 /* MapController.swift */,
+				3DE7A2FA2B9EF76B0021E4E7 /* MapControllerViewModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		3D1C30C92B9E13B400BBD724 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D1C30CA2B9E13B400BBD724 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3DE7A2FC2B9EF8540021E4E7 /* LatitudeAndLongitudeService */ = {
+			isa = PBXGroup;
+			children = (
+				3DE7A2FF2B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift */,
+				3DE7A3012B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift */,
+			);
+			path = LatitudeAndLongitudeService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,6 +292,8 @@
 			dependencies = (
 			);
 			name = PharmacyOnDutyApp;
+			packageProductDependencies = (
+			);
 			productName = PharmacyOnDutyApp;
 			productReference = 3D1C30712B98C8BD00BBD724 /* PharmacyOnDutyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -280,6 +322,8 @@
 				Base,
 			);
 			mainGroup = 3D1C30682B98C8BD00BBD724;
+			packageReferences = (
+			);
 			productRefGroup = 3D1C30722B98C8BD00BBD724 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,19 +356,23 @@
 				3D1C30BB2B9B344600BBD724 /* PickerViewModel.swift in Sources */,
 				3D1C30B32B99E85A00BBD724 /* HomeViewModel.swift in Sources */,
 				3D1C30A42B99D98600BBD724 /* PharmacyHelper.swift in Sources */,
+				3DE7A3022B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift in Sources */,
 				3D1C30C12B9C76DB00BBD724 /* PharmaciesListController.swift in Sources */,
 				3D1C308B2B98C9D500BBD724 /* NetworkHelper.swift in Sources */,
 				3D1C30C32B9C771500BBD724 /* PharmaciesListModel.swift in Sources */,
 				3D1C30A02B99D70B00BBD724 /* AllPharmacyHelper.swift in Sources */,
+				3DE7A3002B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift in Sources */,
 				3D1C30BE2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift in Sources */,
 				3D1C30772B98C8BD00BBD724 /* SceneDelegate.swift in Sources */,
 				3D1C309D2B98ED0700BBD724 /* CitiesService.swift in Sources */,
 				3D1C30952B98E4D200BBD724 /* AllPharmacyModel.swift in Sources */,
 				3D1C30A22B99D71400BBD724 /* AllPharmacyService.swift in Sources */,
 				3D1C30B62B99F5CB00BBD724 /* HomeControllerCell.swift in Sources */,
+				3D1C30C82B9DEAAD00BBD724 /* MapController.swift in Sources */,
 				3D1C30B92B9B1A7D00BBD724 /* PickerViewController.swift in Sources */,
 				3D1C30A62B99DA1900BBD724 /* PharmacyService.swift in Sources */,
 				3D1C30A82B99E14800BBD724 /* DistrictModel.swift in Sources */,
+				3DE7A2FB2B9EF76B0021E4E7 /* MapControllerViewModel.swift in Sources */,
 				3D1C30912B98E21300BBD724 /* CitiesModel.swift in Sources */,
 				3D1C30932B98E38C00BBD724 /* PharmacyModel.swift in Sources */,
 				3D1C30C52B9C8FAC00BBD724 /* PharmaciesListCell.swift in Sources */,
@@ -479,6 +527,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -506,6 +555,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

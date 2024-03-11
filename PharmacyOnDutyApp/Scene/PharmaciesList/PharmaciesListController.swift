@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
 class PharmaciesListController: UIViewController {
     
@@ -39,7 +41,6 @@ class PharmaciesListController: UIViewController {
     func setupDelegate() {
         pharmaciesCollectionView.delegate = self
         pharmaciesCollectionView.dataSource = self
-        
     }
     
     func setupRegister() {
@@ -67,6 +68,39 @@ class PharmaciesListController: UIViewController {
     
 }
 
+//MARK: - Map ButtonProtocol
+extension PharmaciesListController: PharmaciesListCellDelegate {
+    func directionsButtonClicked(latitude: Double, longitude: Double, title: String) {
+        let latitude: CLLocationDegrees = latitude
+        print(latitude)
+        let longitude: CLLocationDegrees = longitude
+        print(longitude)
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                         MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+        
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = title
+        mapItem.openInMaps(launchOptions: options)
+    }
+    
+    
+    func mapButtonClicked(latitude: Double, longitude: Double) {
+        let vc = MapController()
+        vc.latitude = latitude
+        vc.longitude = longitude
+        navigationController?.pushViewController(vc, animated: true)
+        print("mapButtonClicked = latitude: \(latitude) and longitude: \(longitude)")
+    }
+    
+    
+}
+
 //MARK: - Configure CollectionView
 
 extension PharmaciesListController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -77,7 +111,9 @@ extension PharmaciesListController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = pharmaciesCollectionView.dequeueReusableCell(withReuseIdentifier: "PharmaciesListCell", for: indexPath) as! PharmaciesListCell
         let data = pharmaciesListViewModel.pharmacies[indexPath.item]
+        cell.pharmaciesListCellDelegate = self
         cell.configure(data: data)
+        cell.configureLatitudeAndLongitude(data: data, latitude: data.latitude, longitude: data.longitude)
         return cell
     }
     

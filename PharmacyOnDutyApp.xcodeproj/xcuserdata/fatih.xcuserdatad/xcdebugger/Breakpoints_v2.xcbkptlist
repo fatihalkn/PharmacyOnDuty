@@ -18,6 +18,38 @@
             endingLineNumber = "27"
             landmarkName = "request(type:url:method:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4B4DF2B5-A57D-4CCB-93AB-ED2A6E40C288 - 7e7018a0304c034a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PharmacyOnDutyApp.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, url: Swift.String, method: PharmacyOnDutyApp.HTTPmethod, completion: (Swift.Result&lt;&#x3c4;_0_0, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Core/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "4B4DF2B5-A57D-4CCB-93AB-ED2A6E40C288 - 7e7018a0304c034a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PharmacyOnDutyApp.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, url: Swift.String, method: PharmacyOnDutyApp.HTTPmethod, completion: (Swift.Result&lt;&#x3c4;_0_0, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Core/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "452">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,6 +66,38 @@
             endingLineNumber = "39"
             landmarkName = "handleResponse(data:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C5B74D6F-B4BA-4DAE-982E-7A9E106F8D46 - 9f739f73ba575a23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PharmacyOnDutyApp.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(data: Foundation.Data, completion: (Swift.Result&lt;&#x3c4;_0_0, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Core/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "540">
+               </Location>
+               <Location
+                  uuid = "C5B74D6F-B4BA-4DAE-982E-7A9E106F8D46 - 9f739f73ba575a23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PharmacyOnDutyApp.NetworkManager.handleResponse&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(data: Foundation.Data, completion: (Swift.Result&lt;&#x3c4;_0_0, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Core/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "608">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -50,6 +114,38 @@
             endingLineNumber = "21"
             landmarkName = "request(type:url:method:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "536EF51B-D6B7-4D51-A0C3-5339B7AD3D06 - 7e7018a0304c000c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PharmacyOnDutyApp.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, url: Swift.String, method: PharmacyOnDutyApp.HTTPmethod, completion: (Swift.Result&lt;&#x3c4;_0_0, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Core/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "536EF51B-D6B7-4D51-A0C3-5339B7AD3D06 - 7e7018a0304c000c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PharmacyOnDutyApp.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, url: Swift.String, method: PharmacyOnDutyApp.HTTPmethod, completion: (Swift.Result&lt;&#x3c4;_0_0, PharmacyOnDutyApp.ErrorTypes&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PharmacyOnDutyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Desktop/GITHUB%20/PharmacyOnDutyApp/PharmacyOnDutyApp/Network/Core/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "368">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,8 +158,8 @@
             filePath = "PharmacyOnDutyApp/Network/Service/PharmacyModelService/PharmacyService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "getPharmacy(city:disctrict:completion:)"
             landmarkType = "7">
             <Locations>
@@ -161,6 +257,38 @@
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A788BD8A-075F-4405-ADD5-D4BE71CDF751"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PharmacyOnDutyApp/Network/Service/LatitudeAndLongitudeService/LatitudeAndLongitudeService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "getLatitudeAndLongitude(latitude:longitude:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E55DFDC4-708D-4486-8C42-847E7CAF4867"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PharmacyOnDutyApp/Scene/Map/MapControllerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "getLatitudeAndLongitude(latitude:longitude:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

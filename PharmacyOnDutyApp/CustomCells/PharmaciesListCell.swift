@@ -7,9 +7,19 @@
 
 import UIKit
 
+protocol PharmaciesListCellDelegate {
+    func mapButtonClicked(latitude: Double, longitude: Double)
+    func directionsButtonClicked(latitude: Double, longitude: Double, title: String)
+}
+
 class PharmaciesListCell: UICollectionViewCell {
     
     static let identifier = "PharmaciesListCell"
+    var longitude = 0.0
+    var latitude = 0.0
+    var pharmaciesListCellDelegate: PharmaciesListCellDelegate?
+   
+   
     
     private let pharmacyTitle: UILabel = {
         let label = UILabel()
@@ -108,9 +118,11 @@ class PharmaciesListCell: UICollectionViewCell {
     
     
     override init(frame: CGRect) {
+       
         super .init(frame: frame)
         setupUI()
         setupCons()
+        addButtonTargets()
         self.backgroundColor = .white
     }
     
@@ -122,6 +134,34 @@ class PharmaciesListCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func addButtonTargets() {
+        callButton.addTarget(self, action: #selector(clickedCallButton), for: .touchUpInside)
+        mapButton.addTarget(self, action: #selector(clickedMapButton), for: .touchUpInside)
+        directionsButton.addTarget(self, action: #selector(clickeDirectionsButton), for: .touchUpInside)
+    }
+    
+    @objc func clickedCallButton() {
+        if let phoneNumber = pharmacyPhoneNumber.text {
+            if let phoneUrl = URL(string: "tel://\(phoneNumber)") {
+                print(phoneUrl)
+                if UIApplication.shared.canOpenURL(phoneUrl) {
+                    UIApplication.shared.open(phoneUrl)
+                } else {
+                    print("ARAMA BUTONUNA BASTIN AMA ARAMA YAPMADI")
+                }
+            }
+        }
+    }
+
+    @objc func clickedMapButton() {
+        pharmaciesListCellDelegate?.mapButtonClicked(latitude: latitude, longitude: longitude)
+    }
+    
+    @objc func clickeDirectionsButton() {
+        pharmaciesListCellDelegate?.directionsButtonClicked(latitude: latitude, longitude: longitude, title: pharmacyTitle.text ?? "")
+    }
+    
     
     func setupUI() {
         self.addSubview(pharmacyTitle)
@@ -152,7 +192,11 @@ class PharmaciesListCell: UICollectionViewCell {
         pharmacyTitle.text = data.pharmacyName
         pharmacyAdress.text = data.address
         pharmacyPhoneNumber.text = data.phone
-        
+    }
+    
+    func configureLatitudeAndLongitude(data: Cites,latitude: Double?, longitude: Double?) {
+        self.longitude = data.longitude ?? 0.0
+        self.latitude = data.latitude ?? 0.0
     }
     
 }

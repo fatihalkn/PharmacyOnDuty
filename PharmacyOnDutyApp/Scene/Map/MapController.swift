@@ -13,7 +13,9 @@ class MapController: UIViewController, MKMapViewDelegate {
     let mapControllerViewModel = MapControllerViewModel()
     var latitude: Double?
     var longitude: Double?
+    var pharmacyTitle: String?
     let locationManager = CLLocationManager()
+
     private var mapView: MKMapView!
     
     
@@ -24,7 +26,7 @@ class MapController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         locationPermission()
         view.backgroundColor = .bg
-        navigationItem.title = "Harita Görünümğ"
+        navigationItem.title = "Harita Görünümü"
         getData(longitude: latitude, latitude: longitude)
     }
     
@@ -38,8 +40,8 @@ class MapController: UIViewController, MKMapViewDelegate {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.translatesAutoresizingMaskIntoConstraints = false
         let location = CLLocationCoordinate2D(latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
-        print(location)
         let annotation = MKPointAnnotation()
+        annotation.title = ""
         annotation.coordinate = location
         mapView.addAnnotation(annotation)
         mapView.setCenter(location, animated: true)
@@ -73,10 +75,61 @@ class MapController: UIViewController, MKMapViewDelegate {
         renderer.lineWidth = 3.0
         return renderer
     }
-    
+
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {}
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else {
+               return nil
+           }
+        let identifier = "CustomPin"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+            } else {
+                annotationView?.annotation = annotation
+            }
+
+            
+            let pinImage = UIImage(named: "pharmacyPinRed")
+            annotationView?.image = pinImage
+
+            return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let alertController = UIAlertController(title: "Yol Tarifi Gösterilmesini İster Misiniz ?", message: "", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Konuma Git", style: .default) { action in
+            let latitude: CLLocationDegrees = self.latitude ?? 0.0
+            let longitude: CLLocationDegrees = self.longitude ?? 0.0
+            
+            let regionDistance:CLLocationDistance = 10000
+            let coordinates = CLLocationCoordinate2DMake(longitude, latitude)
+            print(coordinates)
+            
+            let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                             MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+            
+            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = self.pharmacyTitle
+            mapItem.openInMaps(launchOptions: options)
+        }
+        let cancelAction = UIAlertAction(title: "Çık", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
  
+
+
+
+
 //MARK: - Configure Constrains
 extension MapController {
     

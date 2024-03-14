@@ -15,11 +15,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let vc = HomeController()
-        let nav = UINavigationController(rootViewController: vc)
-        window.rootViewController = nav
         self.window = window
         self.window?.makeKeyAndVisible()
+        
+        if isOnboardingComlated() {
+            showHomeScene()
+            
+        } else {
+            showOnboardingScene()
+        }
+    }
+    
+    func isOnboardingComlated() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isOnboardingComlated")
+        
+    }
+
+    func showOnboardingScene() {
+        let vc = OnBoardingController()
+        let nav = UINavigationController(rootViewController: vc)
+        self.window?.rootViewController = nav
+        
+    }
+    
+    func showHomeScene() {
+        let vc = HomeController()
+        let nav = UINavigationController(rootViewController: vc)
+        self.window?.rootViewController = nav
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

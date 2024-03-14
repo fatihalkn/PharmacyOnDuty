@@ -9,12 +9,17 @@ import Foundation
 import UIKit
 import CoreLocation
 import MapKit
+import GoogleMobileAds
 
-class PharmaciesListController: UIViewController {
+
+
+class PharmaciesListController: UIViewController, GADBannerViewDelegate {
     
     let pharmaciesListViewModel = PharmaciesListModel()
     var city: String?
     var district: String?
+    
+    var bannerView: GADBannerView!
     
     private let pharmaciesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,8 +40,48 @@ class PharmaciesListController: UIViewController {
         pharmaciesCollectionViewCons()
         getData()
         isSucceed()
+        bannerConfigure()
         view.backgroundColor = .bg
     }
+    
+    
+    
+    func bannerConfigure() {
+        let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
+        let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+        bannerView = GADBannerView(adSize: adaptiveSize)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        pharmaciesCollectionView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: adaptiveSize.size.height + 10, right: 20)
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      addBannerViewToView(bannerView)
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .bottom,
+                              relatedBy: .equal,
+                              toItem: view.safeAreaLayoutGuide,
+                              attribute: .bottom,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: view,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
     
     func setupDelegate() {
         pharmaciesCollectionView.delegate = self
@@ -70,6 +115,7 @@ class PharmaciesListController: UIViewController {
 
 //MARK: - Map ButtonProtocol
 extension PharmaciesListController: PharmaciesListCellDelegate {
+    
     func directionsButtonClicked(latitude: Double, longitude: Double, title: String) {
         let latitude: CLLocationDegrees = latitude
         print(latitude)
@@ -90,12 +136,13 @@ extension PharmaciesListController: PharmaciesListCellDelegate {
     }
     
     
-    func mapButtonClicked(latitude: Double, longitude: Double) {
+    func mapButtonClicked(latitude: Double, longitude: Double, title: String) {
         let vc = MapController()
         vc.latitude = latitude
         vc.longitude = longitude
+        vc.pharmacyTitle = title
         navigationController?.pushViewController(vc, animated: true)
-        print("mapButtonClicked = latitude: \(latitude) and longitude: \(longitude)")
+       
     }
     
     
@@ -118,10 +165,33 @@ extension PharmaciesListController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWitdh: CGFloat = pharmaciesCollectionView.frame.width - 30
-        let cellHeigt: CGFloat = pharmaciesCollectionView.frame.height / 3
-        return .init(width: cellWitdh, height: cellHeigt)
+        let cellWitdh: CGFloat = pharmaciesCollectionView.frame.width - 40
+        let data = pharmaciesListViewModel.pharmacies[indexPath.item]
+        let titleHeight = heightForLabel(text: data.pharmacyName ?? "", width: cellWitdh - 40, font: .systemFont(ofSize: 20, weight: .bold))
+        var adressHeight = heightForLabel(text: data.address ?? "" , width: cellWitdh - (20 + 24 + 5 + 10), font: .systemFont(ofSize: 15, weight: .medium))
+        if adressHeight < 24 {
+            adressHeight = 24
+        }
+        var phoneHeight = heightForLabel(text: data.phone ?? "" , width: cellWitdh - (24 + 5 + 10), font: .systemFont(ofSize: 15, weight: .medium))
+        if phoneHeight < 24 {
+            phoneHeight = 24
+        }
+        
+        let totalHeight = titleHeight + adressHeight + phoneHeight + (10 + 10 + 10 + 10 + 20 + 30)
+        
+        return .init(width: cellWitdh, height: totalHeight)
     }
+    
+    func heightForLabel(text: String, width: CGFloat, font: UIFont) -> CGFloat {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+            label.numberOfLines = 0
+            label.font = font
+            label.text = text
+            label.sizeToFit()
+            return label.frame.height
+        }
+    
+    
 }
 
 //MARK: -  Configure Constrain

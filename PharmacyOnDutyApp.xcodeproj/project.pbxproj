@@ -37,6 +37,10 @@
 		3DE7A2FB2B9EF76B0021E4E7 /* MapControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A2FA2B9EF76B0021E4E7 /* MapControllerViewModel.swift */; };
 		3DE7A3002B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A2FF2B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift */; };
 		3DE7A3022B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A3012B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift */; };
+		3DE7A3052BA187E30021E4E7 /* OnBoardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A3042BA187E30021E4E7 /* OnBoardingController.swift */; };
+		3DE7A3072BA1882D0021E4E7 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A3062BA1882D0021E4E7 /* OnBoardingModel.swift */; };
+		3DE7A30B2BA18CED0021E4E7 /* OnBoardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7A30A2BA18CED0021E4E7 /* OnBoardingCell.swift */; };
+		3DE7A3112BA2EDAF0021E4E7 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 3DE7A3102BA2EDAF0021E4E7 /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,9 @@
 		3DE7A2FA2B9EF76B0021E4E7 /* MapControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControllerViewModel.swift; sourceTree = "<group>"; };
 		3DE7A2FF2B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeAndLongitudeHelper.swift; sourceTree = "<group>"; };
 		3DE7A3012B9EF9510021E4E7 /* LatitudeAndLongitudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeAndLongitudeService.swift; sourceTree = "<group>"; };
+		3DE7A3042BA187E30021E4E7 /* OnBoardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingController.swift; sourceTree = "<group>"; };
+		3DE7A3062BA1882D0021E4E7 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
+		3DE7A30A2BA18CED0021E4E7 /* OnBoardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE7A3112BA2EDAF0021E4E7 /* GoogleMobileAds in Frameworks */,
 				3D1C30CB2B9E13B400BBD724 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +206,7 @@
 		3D1C30AE2B99E83E00BBD724 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3DE7A3032BA1878C0021E4E7 /* OnBoarding */,
 				3D1C30C62B9DEA9A00BBD724 /* Map */,
 				3D1C30BF2B9C76AF00BBD724 /* PharmaciesList */,
 				3D1C30B72B9B1A6800BBD724 /* PicketViewController */,
@@ -220,6 +229,7 @@
 			children = (
 				3D1C30B52B99F5CB00BBD724 /* HomeControllerCell.swift */,
 				3D1C30C42B9C8FAC00BBD724 /* PharmaciesListCell.swift */,
+				3DE7A30A2BA18CED0021E4E7 /* OnBoardingCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -276,6 +286,15 @@
 			path = LatitudeAndLongitudeService;
 			sourceTree = "<group>";
 		};
+		3DE7A3032BA1878C0021E4E7 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				3DE7A3042BA187E30021E4E7 /* OnBoardingController.swift */,
+				3DE7A3062BA1882D0021E4E7 /* OnBoardingModel.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,6 +312,7 @@
 			);
 			name = PharmacyOnDutyApp;
 			packageProductDependencies = (
+				3DE7A3102BA2EDAF0021E4E7 /* GoogleMobileAds */,
 			);
 			productName = PharmacyOnDutyApp;
 			productReference = 3D1C30712B98C8BD00BBD724 /* PharmacyOnDutyApp.app */;
@@ -323,6 +343,7 @@
 			);
 			mainGroup = 3D1C30682B98C8BD00BBD724;
 			packageReferences = (
+				3DE7A30F2BA2EDAF0021E4E7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 3D1C30722B98C8BD00BBD724 /* Products */;
 			projectDirPath = "";
@@ -360,6 +381,7 @@
 				3D1C30C12B9C76DB00BBD724 /* PharmaciesListController.swift in Sources */,
 				3D1C308B2B98C9D500BBD724 /* NetworkHelper.swift in Sources */,
 				3D1C30C32B9C771500BBD724 /* PharmaciesListModel.swift in Sources */,
+				3DE7A30B2BA18CED0021E4E7 /* OnBoardingCell.swift in Sources */,
 				3D1C30A02B99D70B00BBD724 /* AllPharmacyHelper.swift in Sources */,
 				3DE7A3002B9EF8EB0021E4E7 /* LatitudeAndLongitudeHelper.swift in Sources */,
 				3D1C30BE2B9B4BBB00BBD724 /* HalfSizePresentConroller.swift in Sources */,
@@ -372,8 +394,10 @@
 				3D1C30B92B9B1A7D00BBD724 /* PickerViewController.swift in Sources */,
 				3D1C30A62B99DA1900BBD724 /* PharmacyService.swift in Sources */,
 				3D1C30A82B99E14800BBD724 /* DistrictModel.swift in Sources */,
+				3DE7A3072BA1882D0021E4E7 /* OnBoardingModel.swift in Sources */,
 				3DE7A2FB2B9EF76B0021E4E7 /* MapControllerViewModel.swift in Sources */,
 				3D1C30912B98E21300BBD724 /* CitiesModel.swift in Sources */,
+				3DE7A3052BA187E30021E4E7 /* OnBoardingController.swift in Sources */,
 				3D1C30932B98E38C00BBD724 /* PharmacyModel.swift in Sources */,
 				3D1C30C52B9C8FAC00BBD724 /* PharmaciesListCell.swift in Sources */,
 				3D1C30B12B99E85000BBD724 /* HomeController.swift in Sources */,
@@ -591,6 +615,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DE7A30F2BA2EDAF0021E4E7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DE7A3102BA2EDAF0021E4E7 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DE7A30F2BA2EDAF0021E4E7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3D1C30692B98C8BD00BBD724 /* Project object */;
 }

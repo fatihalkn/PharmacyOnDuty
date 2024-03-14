@@ -19,6 +19,8 @@ class CitiesService {
 extension CitiesService: CitiesServiceProtocol {
     
     func getDistrict(city:String ,completion: @escaping ((CitiesModel?, Error?) -> ())) {
+        let a = NetworkHelper.shared.requestDistcUrl(city: city)
+        print(a)
         NetworkManager.shared.request(type: CitiesModel.self, url:  NetworkHelper.shared.requestDistcUrl(city: city)  , method: .get) { response in
             switch response {
             case .success(let data):

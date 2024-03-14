@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+import AdSupport
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.nav]
         navigationBarAppearace.tintColor = .nav
         
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "72fe5fd0a9242a42eb628d20db3e80d4" ]
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
        
         return true
     }
+    
+    
 
     // MARK: UISceneSession Lifecycle
 

@@ -7,10 +7,15 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
+import StoreKit
 
-class HomeController : UIViewController {
+
+class HomeController : UIViewController, GADBannerViewDelegate {
     
     let homeViewModel = HomeViewModel()
+    
+    var bannerView: GADBannerView!
     
     private let homeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,7 +24,7 @@ class HomeController : UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .bg
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         return collectionView
         
     }()
@@ -55,9 +60,7 @@ class HomeController : UIViewController {
         
     }()
     
-    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -66,14 +69,64 @@ class HomeController : UIViewController {
         setupCons()
         getData()
         isSucceed()
+        bannerConfigure()
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    func bannerConfigure() {
+        
+        let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
+        let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+        bannerView = GADBannerView(adSize: adaptiveSize)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        homeCollectionView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: adaptiveSize.size.height + 10, right: 20)
+        
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      addBannerViewToView(bannerView)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupRadius()
         
+        
+        
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .bottom,
+                              relatedBy: .equal,
+                              toItem: view.safeAreaLayoutGuide,
+                              attribute: .bottom,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: view,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
+    
+    
     
     func setupUI() {
         view.addSubview(homePageTitle)
@@ -97,6 +150,9 @@ class HomeController : UIViewController {
         homeCollectionView.dataSource = self
         
         searchTextField.delegate = self
+        
+        
+       
     }
     
     func setupRegister() {
@@ -115,7 +171,30 @@ class HomeController : UIViewController {
             }
         }
     }
-}
+    
+    func showRateApp() {
+        guard let scene = view.window?.windowScene else { return }
+        SKStoreReviewController.requestReview(in: scene)
+        UserDefaults.standard.set(Date(), forKey: "LastRatePromtDate")
+    }
+    
+    func rateAppIfNeeded() {
+        let lastRatePromptDataKey = "LastRatePromtDate"
+        if let lastPromptDate = UserDefaults.standard.object(forKey: lastRatePromptDataKey) as? Date {
+            let timeSinceLastPromt = Date().timeIntervalSince(lastPromptDate)
+            let promptInterval: TimeInterval = 7 * 24 * 60 * 60
+            if timeSinceLastPromt >= promptInterval {
+                showRateApp()
+              }
+            } else {
+                showRateApp()
+            }
+        }
+    }
+    
+    
+    
+
 
 //MARK: - Configure CollectionView
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -137,7 +216,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCity = homeViewModel.cities[indexPath.item].slug
+        let selectedCity = homeViewModel.filterCities[indexPath.item].slug
         let vc = PickerViewController()
         vc.transitioningDelegate = self
         vc.pickerViewDelegate = self
@@ -163,6 +242,7 @@ extension HomeController: PickerViewButtonDelegate {
         vc.city = city
         vc.district = district
         navigationController?.pushViewController(vc, animated: true)
+        rateAppIfNeeded()
     }
 }
 
@@ -184,7 +264,7 @@ extension HomeController: UITextFieldDelegate {
             homeViewModel.filterCities = homeViewModel.cities
         } else {
             homeViewModel.filterCities = homeViewModel.cities.filter {
-                $0.cities.lowercased().contains(searcText)
+                $0.cities.lowercased().contains(searcText.lowercased())
             }
         }
         

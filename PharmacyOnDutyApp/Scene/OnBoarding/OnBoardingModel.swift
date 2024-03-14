@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct OnBoardingModel {
+    let imageName: String
+    let title: String
+    let descTitle: String
+}

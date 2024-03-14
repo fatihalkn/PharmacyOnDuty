@@ -23,7 +23,7 @@ class HalfSizePresentConroller: UIPresentationController {
         
         if let corordinator = presentedViewController.transitionCoordinator {
             corordinator.animate { _ in
-                self.dimmingView.alpha = 0.8
+                self.dimmingView.alpha = 0.9
             }
         }
     }

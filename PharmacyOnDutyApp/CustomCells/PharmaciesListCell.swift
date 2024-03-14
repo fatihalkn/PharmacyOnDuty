@@ -8,9 +8,13 @@
 import UIKit
 
 protocol PharmaciesListCellDelegate {
-    func mapButtonClicked(latitude: Double, longitude: Double)
+    func mapButtonClicked(latitude: Double, longitude: Double, title: String)
     func directionsButtonClicked(latitude: Double, longitude: Double, title: String)
+   
 }
+
+
+
 
 class PharmaciesListCell: UICollectionViewCell {
     
@@ -18,10 +22,11 @@ class PharmaciesListCell: UICollectionViewCell {
     var longitude = 0.0
     var latitude = 0.0
     var pharmaciesListCellDelegate: PharmaciesListCellDelegate?
+
    
    
     
-    private let pharmacyTitle: UILabel = {
+     let pharmacyTitle: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .red
@@ -45,7 +50,7 @@ class PharmaciesListCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = .black
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -155,12 +160,15 @@ class PharmaciesListCell: UICollectionViewCell {
     }
 
     @objc func clickedMapButton() {
-        pharmaciesListCellDelegate?.mapButtonClicked(latitude: latitude, longitude: longitude)
+        pharmaciesListCellDelegate?.mapButtonClicked(latitude: latitude, longitude: longitude, title: pharmacyTitle.text ?? "")
     }
     
     @objc func clickeDirectionsButton() {
         pharmaciesListCellDelegate?.directionsButtonClicked(latitude: latitude, longitude: longitude, title: pharmacyTitle.text ?? "")
     }
+    
+    
+    
     
     
     func setupUI() {
@@ -197,7 +205,9 @@ class PharmaciesListCell: UICollectionViewCell {
     func configureLatitudeAndLongitude(data: Cites,latitude: Double?, longitude: Double?) {
         self.longitude = data.longitude ?? 0.0
         self.latitude = data.latitude ?? 0.0
+        print("Latitude: \(latitude), Longitude: \(longitude)")
     }
+    
     
 }
 
@@ -219,7 +229,7 @@ extension PharmaciesListCell {
             pharmacyTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
             pharmacyTitle.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             pharmacyTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            pharmacyTitle.heightAnchor.constraint(equalToConstant: 50)
+            
         ])
     }
  
@@ -236,9 +246,8 @@ extension PharmaciesListCell {
     func pharmacyAdressCons() {
         NSLayoutConstraint.activate([
             pharmacyAdress.topAnchor.constraint(equalTo: mapImageView.topAnchor),
-            pharmacyAdress.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 5),
-            pharmacyAdress.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            pharmacyAdress.heightAnchor.constraint(equalToConstant: 50)
+            pharmacyAdress.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 10),
+            pharmacyAdress.trailingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
         
     }
@@ -250,27 +259,23 @@ extension PharmaciesListCell {
             phoneImageView.widthAnchor.constraint(equalToConstant: 24),
             phoneImageView.heightAnchor.constraint(equalToConstant: 24)
         ])
-        
     }
     
     func pharmacyPhoneNumberCons() {
         NSLayoutConstraint.activate([
             pharmacyPhoneNumber.topAnchor.constraint(equalTo: phoneImageView.topAnchor, constant: 10),
-            pharmacyPhoneNumber.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 5),
-            pharmacyPhoneNumber.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
+            pharmacyPhoneNumber.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 10),
+            pharmacyPhoneNumber.trailingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
-        
     }
-    
     
     func buttonStackViewConstraints() {
         NSLayoutConstraint.activate([
             buttonStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            buttonStackView.widthAnchor.constraint(equalTo:safeAreaLayoutGuide.widthAnchor,constant: -10),
+            buttonStackView.widthAnchor.constraint(equalTo:safeAreaLayoutGuide.widthAnchor,constant: -40),
             buttonStackView.heightAnchor.constraint(equalToConstant: 30),
+            buttonStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,constant: -20),
             buttonStackView.topAnchor.constraint(equalTo: pharmacyPhoneNumber.bottomAnchor, constant: 10)
         ])
     }
-    
- 
 }

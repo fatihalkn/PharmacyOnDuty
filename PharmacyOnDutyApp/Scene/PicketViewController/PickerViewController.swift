@@ -19,7 +19,7 @@ class PickerViewController: UIViewController {
     let pickerViewModel = PickerViewModel()
     
     var city: String?
-    
+        
     private let districtPickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ class PickerViewController: UIViewController {
         pickerOkButtonCons()
         pickerCancelButtonCons()
         buttonTargets()
-        view.backgroundColor = .pc
+        view.backgroundColor = .white
         navigationItem.title = "Lütfen İlçenizi Seçiniz"
         
     }
@@ -62,7 +62,6 @@ class PickerViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configureRadius()
-        
     }
     
     func buttonTargets() {
@@ -106,7 +105,8 @@ class PickerViewController: UIViewController {
     }
     
     func getData() {
-        guard let city else { return }
+        guard let city = city else { return }
+        print(city)
         pickerViewModel.getDistrict(selectedCity: city)
     }
     
